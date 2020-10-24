@@ -6,17 +6,12 @@ class PianoTiles:
     '''Python bot for Piano Tiles autoclicking'''
     def __init__(self):
         print('Welcome to the Piano Tiles Autoclicker! Press ESC to exit.')
-        self.game_screen = self._game_screen()
-        self.tiles = self._tiles_pos()
-
-
-    def _game_screen(self):
-        y = pyautogui.size()[1] // 2
-        x1, y1 = self._mouse_pos('LEFT')
+        x1 = self._mouse_pos('LEFT')[0]
         while keyboard.is_pressed('enter'): pass
-        x2, y2 = self._mouse_pos('RIGHT')
-        x1, x2 = min(x1, x2), max(x1, x2)
-        return [x1, y, x2, y + 1]
+        x2 = self._mouse_pos('RIGHT')[0]
+        self.left_x, self.right_x = min(x1, x2), max(x1, x2)
+        self.center_y = pyautogui.size()[1] // 2
+        self.tiles = self._tiles_pos()
 
 
     def _mouse_pos(self, border):
@@ -33,16 +28,15 @@ class PianoTiles:
 
 
     def _tiles_pos(self):
-        start = self.game_screen[0]
-        stop = self.game_screen[2] - start
-        step = stop // 4
-        return [(start + i, self.game_screen[1]) for i in range(step // 2, stop, step)]
+        length = self.right_x - self.left_x
+        step = length // 4
+        return [(self.left_x + i, self.center_y) for i in range(step // 2, length, step)]
 
 
     def _is_tile(self, pixel, threshold):
         color = pyautogui.pixel(*pixel)
-        # return True if all([c < threshold for c in color]) else False
         return True if color[0] <= threshold else False
+        # return True if all([c < threshold for c in color]) else False
 
 
     def run(self, *, tile_rgb=10):
