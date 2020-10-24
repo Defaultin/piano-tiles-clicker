@@ -2,8 +2,8 @@
 Python bot for Piano Tiles autoclicking
 
 # Usage
-0. Open the online game
-1. Run script autoclicker.py
+0. Open the online [game](https://www.crazygames.ru/igra/piano-tiles-2-online)
+1. Run script [autoclicker.py](https://google.com)
 2. Place the cursor on the LEFT border of the playing field and press ENTER
 3. Place the cursor on the RIGHT border of the playing field and press ENTER
 4. Start the game by clicking the start button
