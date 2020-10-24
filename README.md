@@ -1,5 +1,6 @@
 # Piano Tiles Clicker
 Python bot for Piano Tiles autoclicking
+![score](https://github.com/Defaultin/piano-tiles-clicker/blob/main/score.jpg)
 
 # Usage
 0. Open the online [game](https://www.crazygames.ru/igra/piano-tiles-2-online)
